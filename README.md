@@ -1,8 +1,17 @@
 # aw07
 
++ 加入购物车
+![](assets/add-products.png)
+
++ 创建订单
+![](assets/create-order.png)
+
++ 查询物流
+![](assets/check-delivery.png)
+
 Please extend your MicroPOS system by adding a delivery service shown as the following figure.
 
-![](10-pos.svg)
+![](assets/10-pos.svg)
 
 When an order is placed by a user, the order serivce sends out an event into some AMQP MOM (such as RabbitMQ). The delivery service will be notified and a new delivery entry will be generated automatically. User can query the delivery status for his orders.
 
