@@ -1,11 +1,11 @@
 spring:
   application:
-    name: pos-order
+    name: pos-delivery
   data:
     mongodb:
       host: "localhost"
       port: 27017
-      database: "Order"
+      database: "Delivery"
   rabbitmq:
     host: localhost
     port: 5672
@@ -14,11 +14,11 @@ spring:
   cloud:
     stream:
       bindings:
-        createOrder-out-0:
+        createDelivery-in-0:
           destination: newOrders
 
 server:
-  port: 8084
+  port: 8085
 
 eureka:
   client:

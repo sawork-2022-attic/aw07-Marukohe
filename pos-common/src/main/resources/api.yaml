@@ -12,7 +12,7 @@ paths:
         - products
       responses:
         '200':
-          description: A paged array of products
+          description: An array of products
           content:
             application/json:
               schema:
@@ -204,6 +204,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /deliveries:
+    get:
+      summary: Get all deliveries
+      operationId: getDeliveries
+      tags:
+        - delivery
+      responses:
+        '200':
+          description: An array of deliveries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Deliveries"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /deliveries/{orderId}:
+    get:
+      summary: Get delivery info by orderId
+      operationId: getDeliveryByOrderId
+      tags:
+        - delivery
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: The id of the order to deliver
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Delivery"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Product:
@@ -256,6 +301,20 @@ components:
             $ref: "#/components/schemas/Item"
         counter:
           type: double
+    Delivery:
+      type: object
+      required:
+        - id
+        - orderId
+      properties:
+        id:
+          type: string
+        orderId:
+          type: string
+    Deliveries:
+      type: array
+      items:
+        $ref: "#/components/schemas/Delivery"
     Error:
       type: object
       required:
