@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Item {
-    private Product product;
-    private int quantity;
+public class Delivery {
+    private String id;
+    private String orderId;
 }

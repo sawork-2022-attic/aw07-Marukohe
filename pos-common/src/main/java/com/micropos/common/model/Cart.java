@@ -1,10 +1,17 @@
 package com.micropos.common.model;
 
-import java.io.Serializable;
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart implements Serializable {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Cart {
+
+    @Builder.Default
     private final List<Item> items = new ArrayList<>();
 
     public List<Item> getItems() {
